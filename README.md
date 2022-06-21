@@ -36,8 +36,12 @@ Shell:
 - Redirect output to files: echo "Test" data 1>output.txt (redirect standard output to output.txt); python -m script.py 2>&1 (redirect standard error to standard output)
 - Be careful about buffering: python -u *.py will run without buffering
 - Pipe output between programs: ls -l | wc -l 
-6) Shell commands
+6) Shell commands configured through arguments/ flags
 - ls: list files
 - ls -lah: list all files, long listing format, human readable sizes
-- 
+7) Command Line Environment
+- Enviroment Varaibles: set of key-value pairs like HOME=/Users/Wendy
+- Examples: $PATH: list of folders where executables are searched for; $CC: default C compiler; $LD_LIBRARY_PATH: search path for the dynamic linker; $TMPDIR: temporary directory
+- Environment Variables are not saved, use dotfiles to configurer shell on startup
+
 
