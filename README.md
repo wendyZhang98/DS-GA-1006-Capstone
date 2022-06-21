@@ -114,8 +114,12 @@
 
 
 ### Singularity
-- 
-
+- Container technology(Docker): Built for HPC environment; Can be run without root priviledges; GPU Integration
+- Create fully encapsulated portable environments: reproduce your environment between GCP and Greene; share exact environment between team members
+- Reuse optimized docker containers: eg: nvidia ngc, tensorflow/ pytorch; Download the Nvidia pytorch docker image; convert it to a singularity image on GCP; run a shell in the image directly: singularity exec /scratch/wz2247/singularity/images/pytorch_21.08-py3.sif /bin/bash
+- Bind Paths: allow us to control which paths to expose to the container; (modify files in the main system)
+- Overlays: If we want to modify the container. e.g.: install new package in the container environment. /.sif files are immutable; instead, we can use overlays and mount the overlay when starting the container: singularity exec --overlay my_overlay.ext3 /scratch/wz2247/singularity/images/pytorch_21.08-py3.sif bash
+<img width="404" alt="Screen Shot 2022-06-21 at 18 13 55" src="https://user-images.githubusercontent.com/49216429/174905789-5ecc1266-cb69-4d13-9dc0-d7bfface781d.png">
 
 
 
