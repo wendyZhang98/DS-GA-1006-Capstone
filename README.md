@@ -1,11 +1,11 @@
 # DS-GA-1006-Capstone
 
-Goals of the Bootcamp
+### Goals of the Bootcamp
 - Workflow: Github, Collaboration, Testing, Reproducibility
 - Software tools: IDE, CLI, Environment Management(Docker/Singularity)
 - System Knowledge: HPC, GPUs
 
-Data Science Software Stack
+### Data Science Software Stack
 - CLI
 - IDE(Vscode), Debugging, Testing, Notebook
 - Python(Conda), Programming with GPUs
@@ -14,7 +14,7 @@ Data Science Software Stack
 
 [Practical Examples given by WendaZhou](https://github.com/wendazhou/cds-bootcamp)
 
-Shell: 
+### Shell
 1) Text-based interface for computer; Access through terminal
 - Programmable/ Automatable
 - Translate well across platforms(Laptop, Desktop, HPC Cluster, Cloud)
@@ -43,5 +43,37 @@ Shell:
 - Enviroment Varaibles: set of key-value pairs like HOME=/Users/Wendy
 - Examples: $PATH: list of folders where executables are searched for; $CC: default C compiler; $LD_LIBRARY_PATH: search path for the dynamic linker; $TMPDIR: temporary directory
 - Environment Variables are not saved, use dotfiles to configurer shell on startup
+8）CLI working directory & filesystems:
+- All programs have a notion of working directory, the command pwd prints the current working directory that you are "in"
+- Relative paths(be resolved with respect to this directory) & Absolute path(do not consider the working directory)
+- Directory('.') & Parent Directory('..')
+9) $PATH
+- Path configures where the shell looks for commands
+- The command which can be used to resolve the command. >>which is /bin/ls; >>which python /Users/Wendy/miniconda3/bin/python
+- Package managers(e.g. conda) use the path to manage environments. 
+- You can also set custom paths if you install additional software. This can be very useful in shared environment(e.g. HPC)
+10) CLI dotfiles:
+- Hidden by default from "ls" and global expansion
+- ~/.bashrc or ~/.zshrc; This file is run at the startup of every shell. Add commands here to make "persistant" changes to the shell environment
+- .condarc: This file is used to configure conda(e.g. channels)
+- .gitignore: This file is used to exclue files from tracking by git
+
+### Git
+- Distributed source control system; keep track of different version of code; not so good for data
+- Used through command line tool [GIT](https://missing.csail.mit.edu/2020/version-control/)
+
+### Virtual Environments/Conda
+- Manage separate installations of python: Separate packages for different projects; On shared systems: Different installations for different users
+- Reproducible environments: Share between collaborators; Ensure that results are stable through time
+- Containers: Encapsulate entire system 
+- Be careful about system specific packages(especially GPU!) eg: install packages with GPU on cluster machine, but CPU only on your laptop
+
+### Conda
+- General purpose package manager: Manage python install; Manage native tools installs(e.g. compilers, CUDA)
+- Prefer conda over pip when available: pip has trouble with native dependencies(e.g. CUDA)
+
+
+
+
 
 
