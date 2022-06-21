@@ -70,10 +70,18 @@
 
 ### Conda
 - General purpose package manager: Manage python install; Manage native tools installs(e.g. compilers, CUDA)
-- Prefer conda over pip when available: pip has trouble with native dependencies(e.g. CUDA)
+- Prefer conda over pip when available: pip has trouble with native dependencies(e.g. CUDA) 
+- Avoid installing packages in the base environment
+- Try to keep track of packages you have installed. Write an environment.yml file
+- For faster installation, use mamba 
 
-
-
-
-
+### IDE(Integrated Development Environment)
+- Code Completion; Debugger; Test Explorer; Notebooks
+- VScode(lightweight multi-platform IDE); May also want to consider pycharm; Remote development capabilities: use this extensively.
+- [Getting start with VScode](https://code.visualstudio.com/docs/python/python-tutorial)
+- [Python Project Sturcutre](https://docs.python-guide.org/writing/structure/)
+- setup.py: used to install packages, to install locally, run: pip install -e
+- mypackage/: main folder for your package
+- tests/: main folder for your tests
+- requirement.txt: explicit listing of your dependencies(pip); can also use environment.yml(conda)
 
