@@ -15,44 +15,44 @@
 [Practical Examples given by WendaZhou](https://github.com/wendazhou/cds-bootcamp)
 
 ### Shell
-1) Text-based interface for computer; Access through terminal
+#### 1) Text-based interface for computer; Access through terminal
 - Programmable/ Automatable
 - Translate well across platforms(Laptop, Desktop, HPC Cluster, Cloud)
-2) Shell Basics
+#### 2) Shell Basics
 - Shell is a programming language
 - Main programming aspects we make use of: variables, redirection, globbing
-3) Shell Variables
+#### 3) Shell Variables
 - All variables in Shell are "strings"
 - Define a variable by assignment: MY_VAR="my value"
 - Access variable value by expansions(string replacement): echo"$HOME/$MY_VAR"
 - Double quotes(") enalble expansions, but single quotes(') don't!: echo'$MY_VAR' doesn't work
 - Pass variables to prgram: export, otherwise value only set in your shell
-4) Shell Globbing
+#### 4) Shell Globbing
 - *: match any number of characters: echo *.txt lists all text files 
 - ?: match single character
 - [1-9]: match any single digit
-5) Shell Redirection
+#### 5) Shell Redirection
 - Programs can communicate with each other through standard pipes: standard output=1, standard error=2
 - Redirect output to files: echo "Test" data 1>output.txt (redirect standard output to output.txt); python -m script.py 2>&1 (redirect standard error to standard output)
 - Be careful about buffering: python -u *.py will run without buffering
 - Pipe output between programs: ls -l | wc -l 
-6) Shell commands configured through arguments/ flags
+#### 6) Shell commands configured through arguments/ flags
 - ls: list files
 - ls -lah: list all files, long listing format, human readable sizes
-7) Command Line Environment
+#### 7) Command Line Environment
 - Enviroment Varaibles: set of key-value pairs like HOME=/Users/Wendy
 - Examples: $PATH: list of folders where executables are searched for; $CC: default C compiler; $LD_LIBRARY_PATH: search path for the dynamic linker; $TMPDIR: temporary directory
 - Environment Variables are not saved, use dotfiles to configurer shell on startup
-8）CLI working directory & filesystems:
+#### 8）CLI working directory & filesystems:
 - All programs have a notion of working directory, the command pwd prints the current working directory that you are "in"
 - Relative paths(be resolved with respect to this directory) & Absolute path(do not consider the working directory)
 - Directory('.') & Parent Directory('..')
-9) $PATH
+#### 9) $PATH
 - Path configures where the shell looks for commands
 - The command which can be used to resolve the command. >>which is /bin/ls; >>which python /Users/Wendy/miniconda3/bin/python
 - Package managers(e.g. conda) use the path to manage environments. 
 - You can also set custom paths if you install additional software. This can be very useful in shared environment(e.g. HPC)
-10) CLI dotfiles:
+#### 10) CLI dotfiles:
 - Hidden by default from "ls" and global expansion
 - ~/.bashrc or ~/.zshrc; This file is run at the startup of every shell. Add commands here to make "persistant" changes to the shell environment
 - .condarc: This file is used to configure conda(e.g. channels)
@@ -98,8 +98,37 @@
 - Greene cluster(large HPC cluster): ~550 CPU machines(48 cores each); ~60 GPU machines
 - Slurm: System to specify jobs for processing on the cluster; Best suited for batch processing; Used to control allocations of GCP instances
 - GCP on Greene: NYU HPC provides a service to access google cloud resources through SLURM; we use this to provision a remote development environment
-- Allocate new GCP instance: srun --account=*(authorization to allocate the machine) --partition=interactive --time=8:00:00(max 24 hours) --pty /bin/bash(allocate interactive shell); for gpus, we need to specify additionally: --gres=gpu:v100:1
-- Check allocated node with: squeue -u $USER(run on the log-burst server); Edit the .ssh/config file on laptop to point to the allocated server(Host burstinstance Hostname $log-burst$); Connect with ssh burstinstance
+- Allocate new GCP instance: srun --account=(authorization to allocate the machine) --partition=interactive --time=8:00:00(max 24 hours) --pty /bin/bash(allocate interactive shell); for gpus, we need to specify additionally: --gres=gpu:v100:1
+- Check allocated node with: squeue -u USER(run on the log-burst server); Edit the .ssh/config file on laptop to point to the allocated server(Host burstinstance Hostname $log-burst$); Connect with ssh burstinstance
+
+### Remote Development Tips
+- Use tmux(terminal multiplexer) to keep the session alive(install tmux through conda); allow multiple panes through a single connection; [cheatsheet](https://gist.github.com/MohamedAlaa/2961058)
+- Use htop to monitor CPU/memory usage: (Greene cluster storage: Home:/home/$USER 50GM 30k inodes; Scratch:/scratch/$USER 5TB 1M inodes; Archive:/archive/$USER 2TB 20k inodes; for home/archive, inode limit is severe, don't install conda in home directory!)
+- Use nvidia-smi to monitor GPU usage: watch -n1 nvidia-smi(to continuously monitor)
+
+### Greene cluster storage and GCP
+- GCP machines see a different filesystem: no "hard" quotas on GCP, also have /home and /scratch but different content
+- To transfer data between GCP and Greene, log onto a GCP machine, then use scp to greene-dtn: scp greene-dtn:/scratch/wz2247/data/places365.squashfs
+
+<img width="813" alt="Screen Shot 2022-06-21 at 17 44 56" src="https://user-images.githubusercontent.com/49216429/174902372-c8766734-b36b-4aef-9724-543754bd9ad7.png">
+
+
+### Singularity
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
