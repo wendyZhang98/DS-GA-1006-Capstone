@@ -85,3 +85,30 @@
 - tests/: main folder for your tests
 - requirement.txt: explicit listing of your dependencies(pip); can also use environment.yml(conda)
 
+### Remote Development
+- Leverage powerful hardware: GPUs/accelerators + CPU clusters + Storage for large datasets
+- Remote Shells(SSH): Connect a text-based interface to a remote computer; Can be used to tunnel other applications(e.g. file copy, git). Encrypted + Authenticated connection; Username + Password | Key-based authentication(file on local computer) | Hardware key(common in big companies); Can be used to connect other applications(Jupyter | VSCode)
+- SSH configuration: SSH is configured through files found in the ~/.ssh folder. ~/.ssh/config file allows for configuration(configure how ssh connects to various hosts, the basic configuration specifies username and host); Public/Private key pairs store in ~./ssh folder; ~/.ssh/id_rsa contains private key
+- SSH connection Multiplexing: To avoid the need to reconnect every time, we can multiplex(reuse) one connection. Edit configuration in ~/.ssh/config
+- SSH Agent Forwarding: We will often need to further authenticate the remote to further services. eg: laptop->cluster->github; laptop->gateway->cluster; We can ask SSH to forward the authentication through agent forwarding: make sure to add the key to the agent
+- SSH ProxyJump: In many large systems, we cannot connect to the remote directly. eg: gateway/ bastion host; NYU HPC: must connect to gw.hpc.nyu.edu from outside VPN; We can ask SSH to proxy the connection through another host using the ProxyJump command
+
+### NYU Green GCP Bursting
+- nyugateway(ProxyJump) --> greene(large HPC cluster) --> greeneburst --> burstinstance(GCP on Greene)
+- Greene cluster(large HPC cluster): ~550 CPU machines(48 cores each); ~60 GPU machines
+- Slurm: System to specify jobs for processing on the cluster; Best suited for batch processing; Used to control allocations of GCP instances
+- GCP on Greene: NYU HPC provides a service to access google cloud resources through SLURM; we use this to provision a remote development environment
+- Allocate new GCP instance: srun --account=*(authorization to allocate the machine) --partition=interactive --time=8:00:00(max 24 hours) --pty /bin/bash(allocate interactive shell); for gpus, we need to specify additionally: --gres=gpu:v100:1
+- Check allocated node with: squeue -u $USER(run on the log-burst server); Edit the .ssh/config file on laptop to point to the allocated server(Host burstinstance Hostname $log-burst$); Connect with ssh burstinstance
+
+
+
+
+
+
+
+
+
+
+
+
