@@ -1,5 +1,6 @@
 # DS-GA-1006-Capstone
 
+
 ### Goals of the Bootcamp
 - Workflow: Github, Collaboration, Testing, Reproducibility
 - Software tools: IDE, CLI, Environment Management(Docker/Singularity)
@@ -15,6 +16,9 @@
 [Practical Examples given by WendaZhou](https://github.com/wendazhou/cds-bootcamp)
 
 ### Shell
+
+https://wangchujiang.com/linux-command/
+
 #### 1) Text-based interface for computer; Access through terminal
 - Programmable/ Automatable
 - Translate well across platforms(Laptop, Desktop, HPC Cluster, Cloud)
